@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Digital ve Analog Saat</title>
+  --------------------------------------------------------------
+    By Kamil Umut Araz          instagram : k.umutarazz
+  --------------------------------------------------------------
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: beige;
+    }
+
+    #clock-container {
+      text-align: center;
+    }
+
+    #digital-clock {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+
+    #hour-hand, #minute-hand, #second-hand {
+      position: absolute;
+      background: black;
+      transform-origin: 50% 100%;
+    }
+
+    #hour-hand {
+      width: 6px;
+      height: 50px;
+    }
+
+    #minute-hand {
+      width: 4px;
+      height: 70px;
+    }
+
+    #second-hand {
+      width: 2px;
+      height: 80px;
+      background: red;
+    }
+  </style>
+</head>
+<body>
+  <div id="clock-container">
+    <div id="digital-clock"></div>
+    <div id="analog-clock">
+      <div id="hour-hand"></div>
+      <div id="minute-hand"></div>
+      <div id="second-hand"></div>
+    </div>
+  </div>
+
+  <script>
+    function updateTime() {
+  const now = new Date();
+
+ 
+  const digitalClock = document.getElementById('digital-clock');
+  digitalClock.textContent = now.toLocaleTimeString();
+
+
+  const secondHand = document.getElementById('second-hand');
+  const minuteHand = document.getElementById('minute-hand');
+  const hourHand = document.getElementById('hour-hand');
+
+  const seconds = now.getSeconds();
+  const minutes = now.getMinutes();
+  const hours = now.getHours();
+
+  const secondDegrees = (seconds / 60) * 360;
+  const minuteDegrees = ((minutes * 60 + seconds) / 3600) * 360;
+  const hourDegrees = ((hours % 12 * 3600 + minutes * 60 + seconds) / 43200) * 360;
+
+  secondHand.style.transform = `rotate(${secondDegrees}deg)`;
+  minuteHand.style.transform = `rotate(${minuteDegrees}deg)`;
+  hourHand.style.transform = `rotate(${hourDegrees}deg)`;
+}
+
+
+setInterval(updateTime, 1000);
+
+
+updateTime();
+
+  </script>
+</body>
+</html>
