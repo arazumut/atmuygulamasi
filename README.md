@@ -1,1 +1,2 @@
-kredi çeker,para çeker,para yatırır ve güncel bakiyenizi,borcunuzu gösterir
+<h1>günüzümün basit atm teknolojisi yazılımı.</h1>
+<h1>hem dijital hem analog cihazınızdan anlık olarak saati çeker ve gösterir.</h1>
